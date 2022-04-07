@@ -1,8 +1,13 @@
 import React from 'react'
 import './App.css'
+import { Routing } from 'routing'
 
 function App() {
-  return <></>
+  return (
+    <>
+      <Routing />
+    </>
+  )
 }
 
 export default App

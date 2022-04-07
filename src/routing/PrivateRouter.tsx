@@ -1,20 +1,17 @@
-import React, { ReactNode, Suspense, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import React, { FC, Suspense, ReactNode, useEffect } from 'react'
+import { Navigate } from 'react-router-dom'
 import { Preloader } from 'components/preloader'
+import { RouterContentProps } from 'types/privateRouter'
+import getToken from '../utils/getToken'
 
-interface RouterContentProps {
-  children: ReactNode
-  isPrivate: boolean
-  path?: string
-}
-
-export const RouterContent = ({
+export const RouterContent: FC<RouterContentProps> = ({
   children,
   isPrivate,
-  path,
 }: RouterContentProps) => {
-  return (
+  const isAuth = getToken()
+  return !isAuth && isPrivate ? (
+    <Navigate to={'/'} />
+  ) : (
     <>
       <Suspense fallback={<Preloader />}>{children}</Suspense>
     </>
