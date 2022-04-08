@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import Header from '../header'
+import * as ST from './styled'
 
 interface ILayoutProps {
   children: any
@@ -8,10 +9,10 @@ interface ILayoutProps {
 
 const Layout: FC<ILayoutProps> = ({ children, withHeader = true }) => {
   return (
-    <>
+    <ST.MainContainer>
       {withHeader && <Header />}
       {children}
-    </>
+    </ST.MainContainer>
   )
 }
 
