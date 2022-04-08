@@ -1,8 +1,13 @@
 import { ReactNode } from 'react'
 
-export interface IUserDataAuth {
+export interface User {
   id: number
-  token: string
+  email: string
+  username: string
+}
+export interface IUserDataAuth {
+  accessToken: string
+  user: User
 }
 
 export interface PropsRegisterStep {
@@ -26,4 +31,29 @@ export interface PropsAuthForm extends PropsRegisterStep {
   errorText: string
   isDisabled: boolean
   handleSubmit: () => void
+}
+
+export enum AuthActionTypes {
+  LOGIN = 'LOGIN',
+  LOGOUT = 'LOGOUT',
+}
+
+interface Login {
+  type: AuthActionTypes.LOGIN
+  payload: {
+    accessToken: string
+    user: User
+  }
+}
+
+interface Logout {
+  type: AuthActionTypes.LOGOUT
+}
+
+export type AuthAction = Login | Logout
+
+export type AuthState = {
+  accessToken: string
+  user: User
+  isAuthorised: boolean
 }

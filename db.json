@@ -17,6 +17,78 @@
       "password": "$2a$10$rJiDY90GO7ZxHOOyjt10zu5CelMaVVE3QGab1ToCHMSgG568jn3S.",
       "username": "a.konnova",
       "id": 3
+    },
+    {
+      "email": "konnova.anya2016@mail.ru",
+      "password": "$2a$10$tGWj64bmuh3rpHvF0oSjLOlolrvv8aTaYy1hiscogIHMPQ0KD8URu",
+      "username": "a.konnova",
+      "id": 4
+    },
+    {
+      "email": "testLogin@gmail.ru",
+      "password": "$2a$10$tF3U0IeJCsdADOchXoInGesMEqekaPrOGtv5s0EP3cvsusZmX8CiS",
+      "username": "a.konnova",
+      "id": 5
+    },
+    {
+      "email": "testLogin@m.ru",
+      "password": "$2a$10$Chzk/2nc3YvRcEF7/kzfu.bHkXAodujdT/IeLaNlBWoAWuMMfSlaS",
+      "username": "a.konnova",
+      "id": 6
+    },
+    {
+      "email": "testLogin@mil.ru",
+      "password": "$2a$10$gWrU0OYZ/5rCZxFfwAWuceg9kBH15vWxtZnBFd2A5GXTLsJR1SZdq",
+      "username": "ann",
+      "id": 7
+    },
+    {
+      "email": "testLogin@a.ru",
+      "password": "$2a$10$SAQ7oXwxPxk.ON2wYVsBm.2Q2cZVDFuVdcct2MKKaxOvWvGTyyfXO",
+      "username": "a.konnova",
+      "id": 8
+    },
+    {
+      "email": "testLogin@j.ru",
+      "password": "$2a$10$sx/O2OwrsJQrF4JgVhku2.neylmEZ3tgcVEG9b89HYZnpJ2Y8ELN.",
+      "username": "a.konnova",
+      "id": 9
+    },
+    {
+      "email": "testLogin@il.ru",
+      "password": "$2a$10$eEfOPkahB0tjv5tVJl6VN.NGw015JKIH3QpASpWeTxXloZfYJgjnW",
+      "username": "a.konnova",
+      "id": 10
+    },
+    {
+      "email": "testLogin@t.ru",
+      "password": "$2a$10$RtdA8LQE48BmUjC4XOry6uKkdj4r4iFKes6m7sjgbHrTeP9TRmFlq",
+      "username": "a.konnova",
+      "id": 11
+    },
+    {
+      "email": "testLoin@ml.ru",
+      "password": "$2a$10$zBXZEOfJMRKs5rqOiNso7OfajjqeI9JfYmT9wfIZWcxlZ./tgiwri",
+      "username": "konnova.anya",
+      "id": 12
+    },
+    {
+      "email": "testLon@mail.ru",
+      "password": "$2a$10$Nr4NozqeHeE9BP1YVGkAqeA6KZNQuqpo0THhY0hp/6B4takiblmj6",
+      "username": "a.konnova",
+      "id": 13
+    },
+    {
+      "email": "tetLon@mail.ru",
+      "password": "$2a$10$OCn81qGTHY0Rbn9IaMgTPe.gykdolRYnGcm3oqBdCgQE0hYuSo4He",
+      "username": "konnova.anya",
+      "id": 14
+    },
+    {
+      "email": "tLogin@mail.ru",
+      "password": "$2a$10$uipSfVYT4dIvw09Ogg3sF.DcsG9mi40w4qPmu5Uc3ppnJ97Tp7Ume",
+      "username": "a.konnova",
+      "id": 15
     }
   ]
 }

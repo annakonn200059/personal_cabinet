@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { FC } from 'react'
 import './App.css'
 import { Routing } from 'routing'
 
-function App() {
+const App: FC = () => {
   return (
     <>
       <Routing />

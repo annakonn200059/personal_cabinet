@@ -6,23 +6,30 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
 import { registerUser } from 'api/auth'
-//import { useSelector } from 'react-redux'
-//import { RootState } from 'store/store'
-//import { AuthState } from 'types/authType'
+import { useDispatch } from 'react-redux'
+import { login } from 'store/actions/auth'
+import { useGetStateUser } from 'utils/getStateUser'
 
 export const Register = ({ setStep }: PropsRegisterStep) => {
   const navigate = useNavigate()
-  //const stateUser = useSelector<RootState, AuthState>((state) => state.auth)
+  const dispatch = useDispatch()
+  const stateUser = useGetStateUser()
   const [isDisabled, setIsDisabled] = useState<boolean>(false)
   const [errorText, setErrorText] = useState<string>('')
+
   const handleIsDisabled = (): void => {
     setIsDisabled((prevState) => !prevState)
   }
-  /* useEffect(() => {
+
+  useEffect(() => {
     if (stateUser.isAuthorised) {
-      navigate('/')
+      navigate('/contacts')
     }
-  })*/
+  })
+
+  useEffect(() => {
+    localStorage.setItem('auth', JSON.stringify(stateUser))
+  }, [stateUser])
 
   const { handleChange, handleSubmit, values, errors } = useFormik({
     initialValues: { email: '', username: '', password: '' },
@@ -34,8 +41,9 @@ export const Register = ({ setStep }: PropsRegisterStep) => {
         username: values.username,
       })
         .then((resp) => {
+          dispatch(login(resp.accessToken, resp.user))
           handleIsDisabled()
-          setStep(2)
+          navigate('/contacts')
         })
         .catch((e) => {
           handleIsDisabled()

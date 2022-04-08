@@ -3,25 +3,27 @@ import * as ST from './styled'
 import { PropsRegisterStep } from 'types/auth'
 import { AuthForm } from '../../authForm'
 import { useFormik } from 'formik'
+import { login } from 'store/actions/auth'
 import * as Yup from 'yup'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { loginUser } from 'api/auth'
+import { useGetStateUser } from 'utils/getStateUser'
 
 export const Login = ({ setStep }: PropsRegisterStep) => {
-  //const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const navigate = useNavigate()
-  /*const stateUser: AuthState = useSelector<RootState, AuthState>(
-    (state) => state.auth
-  )*/
+  const stateUser = useGetStateUser()
   const [isDisabled, setIsDisabled] = useState<boolean>(false)
   const [errorText, setErrorText] = useState<string>('')
+
   const handleIsDisabled = (): void => {
     setIsDisabled((prevState) => !prevState)
   }
-  /*  useEffect(() => {
+
+  useEffect(() => {
     localStorage.setItem('auth', JSON.stringify(stateUser))
-  }, [stateUser])*/
+  }, [stateUser])
 
   const { handleChange, handleSubmit, values, errors } = useFormik({
     initialValues: { email: '', password: '' },
@@ -29,7 +31,7 @@ export const Login = ({ setStep }: PropsRegisterStep) => {
       handleIsDisabled()
       loginUser({ email: values.email, password: values.password })
         .then((resp) => {
-          //dispatch(login(resp.token, resp.user))
+          dispatch(login(resp.accessToken, resp.user))
           handleIsDisabled()
           navigate('/contacts')
         })

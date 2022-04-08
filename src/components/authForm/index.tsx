@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import * as ST from './styled'
 import { PropsAuthForm } from '../../types/auth'
 
