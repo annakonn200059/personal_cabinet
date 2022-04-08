@@ -1,3 +1,22 @@
 {
-  "users": []
+  "users": [
+    {
+      "email": "konnova.anya2016@yandex.ru",
+      "password": "$2a$10$jM9CjYVaPt8WupUXgz23J.xOq4GgM3/lUMWeOa2GkRvCX4Ypt5a56",
+      "username": "ann",
+      "id": 1
+    },
+    {
+      "email": "testLogin@mail.ru",
+      "password": "$2a$10$.AYptXjzjoNUK3SnoTCFGedhfmvxvXXuYLYY1MLAuFHuAYizo1zrK",
+      "username": "ann",
+      "id": 2
+    },
+    {
+      "email": "a.konnova@profsoft.pro",
+      "password": "$2a$10$rJiDY90GO7ZxHOOyjt10zu5CelMaVVE3QGab1ToCHMSgG568jn3S.",
+      "username": "a.konnova",
+      "id": 3
+    }
+  ]
 }

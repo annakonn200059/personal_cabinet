@@ -10,4 +10,5 @@ export enum COLORS {
   red = '#FF0000',
   overlay = '#00000080',
   darkBlue = '#1B2559',
+  lightGrey = '#6D7580',
 }
