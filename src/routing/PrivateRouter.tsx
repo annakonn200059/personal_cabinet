@@ -9,6 +9,7 @@ export const RouterContent: FC<RouterContentProps> = ({
   isPrivate,
 }: RouterContentProps) => {
   const isAuth = getToken()
+
   return !isAuth && isPrivate ? (
     <Navigate to={'/'} />
   ) : (

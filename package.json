@@ -30,7 +30,7 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start-auth": "json-server --watch ./db.json",
+    "start-auth": "json-server --watch ./db.json -m ./node_modules/json-server-auth --port 3006",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -1,6 +1,7 @@
 import React, { lazy } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { RouterContent } from './PrivateRouter'
+import Layout from 'components/layouts'
 
 const Error = lazy(() =>
   import('pages/error').then((module) => ({ default: module.ErrorPage }))
@@ -25,8 +26,14 @@ export const Routing = () => {
       />
       <Route
         path={'/contacts'}
-        element={<RouterContent isPrivate={true} children={<Contacts />} />}
+        element={
+          <RouterContent
+            isPrivate={true}
+            children={<Layout children={<Contacts />} />}
+          />
+        }
       />
+
       <Route
         path={'*'}
         element={<RouterContent isPrivate={false} children={<Error />} />}
