@@ -1,15 +1,17 @@
 import { apiRequest } from '../request'
-import {
-  IPostContact,
-  IPostContactResponse,
-  IDeleteContact,
-  IPatchContact,
-} from 'types/contacts'
+import { IPostContact, IPostContactResponse, IPutContact } from 'types/contacts'
 
-export const getAllContacts = async (
+export const getAllPersonalContacts = async (
   idUser: number
 ): Promise<IPostContactResponse[]> => {
   const resp = await apiRequest().get(`/contacts?args.idUser=${idUser}`)
+  return resp.data
+}
+
+export const getContactInfo = async (
+  idContact: number
+): Promise<IPostContactResponse> => {
+  const resp = await apiRequest().get(`/contacts/${idContact}`)
   return resp.data
 }
 
@@ -25,15 +27,11 @@ export const deleteContact = async (idContact: number): Promise<string> => {
   return resp.data
 }
 
-export const patchContact = async ({
-  idContact,
-  args,
-}: IPatchContact): Promise<string> => {
-  const params = Object.keys(args)
-  const values = Object.values(args)
-  console.log(params)
-  console.log(values)
-
-  const resp = await apiRequest().patch(`/contacts/${idContact}`, {})
+export const patchContact = async (
+  props: IPutContact
+): Promise<IPostContactResponse> => {
+  const resp = await apiRequest().patch(`/contacts/${props.idContact}`, {
+    args: props.args,
+  })
   return resp.data
 }

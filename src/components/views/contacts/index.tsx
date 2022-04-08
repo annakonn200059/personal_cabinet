@@ -3,7 +3,7 @@ import * as ST from './styled'
 import { AddContact } from './addContacts'
 import { ContactsList } from './contactsList'
 import { IPostContactResponse } from 'types/contacts'
-import { getAllContacts } from 'api/contacts'
+import { getAllPersonalContacts } from 'api/contacts'
 import { useGetStateUser } from 'utils/getStateUser'
 
 export const ContactsComponent = () => {
@@ -29,8 +29,26 @@ export const ContactsComponent = () => {
     [contacts]
   )
 
+  const updateContacts = useCallback(
+    (updatedContact: IPostContactResponse) => {
+      setContacts(
+        contacts.map((contact) =>
+          contact.id === updatedContact.id
+            ? {
+                ...contact,
+                args: {
+                  ...updatedContact.args,
+                },
+              }
+            : { ...contact }
+        )
+      )
+    },
+    [contacts]
+  )
+
   useEffect(() => {
-    getAllContacts(stateUser.user.id).then((resp) => setContacts(resp))
+    getAllPersonalContacts(stateUser.user.id).then((resp) => setContacts(resp))
   }, [])
 
   return (
@@ -40,6 +58,7 @@ export const ContactsComponent = () => {
         <ContactsList
           contacts={contacts}
           deleteContactListItem={deleteContactItem}
+          updateContactListItem={updateContacts}
         />
       </ST.MainContainer>
     </ST.Container>

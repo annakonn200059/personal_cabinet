@@ -2,13 +2,12 @@ import React from 'react'
 import { AuthState } from './auth'
 
 export interface IContact {
+  [key: string]: string | number | undefined
   name?: string
   phoneNumber?: string
 }
 
-export interface IPostContact {
-  name: string
-  phoneNumber: string
+export interface IPostContact extends IContact {
   idUser: number
 }
 
@@ -20,13 +19,14 @@ export interface IPostContactResponse {
 export interface IDeleteContact {
   idContact: number
 }
-export interface IPatchContact extends IDeleteContact {
+export interface IPutContact extends IDeleteContact {
   args: IContact
 }
 
 export interface IContactList {
   contacts: IPostContactResponse[]
   deleteContactListItem: (idContact: number) => void
+  updateContactListItem: (updatedContact: IPostContactResponse) => void
 }
 
 export interface IAddContact {

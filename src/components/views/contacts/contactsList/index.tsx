@@ -1,12 +1,25 @@
 import React, { FC, useEffect, useState } from 'react'
 import * as ST from './styled'
-import { IContactList } from 'types/contacts'
-import { deleteContact, patchContact } from 'api/contacts'
+import {
+  IContact,
+  IContactList,
+  IPostContact,
+  IPostContactResponse,
+} from 'types/contacts'
+import { deleteContact, getContactInfo, patchContact } from 'api/contacts'
 import DefaultPopup from '../../../ui/modals/defaultModal'
+import { useFormik } from 'formik'
 
 interface IConfirmDelete {
   onDelete: () => void
   closeModal: () => void
+}
+
+interface IEditContact {
+  idContact: number
+  closeModal: () => void
+  contactInfo: IPostContact
+  updateContactListItem: (updatedContact: IPostContactResponse) => void
 }
 
 const ConfirmDelete = ({ onDelete, closeModal }: IConfirmDelete) => {
@@ -25,13 +38,84 @@ const ConfirmDelete = ({ onDelete, closeModal }: IConfirmDelete) => {
   )
 }
 
+const ModalEditContact = ({
+  idContact,
+  closeModal,
+  contactInfo,
+  updateContactListItem,
+}: IEditContact) => {
+  const [errorText, setErrorText] = useState<string>('')
+
+  const { handleChange, handleSubmit, values, errors } = useFormik({
+    initialValues: { ...contactInfo },
+    onSubmit: async () => {
+      const changedFields: IContact = {}
+      Object.keys(contactInfo).forEach((contactField) => {
+        if (values[contactField])
+          changedFields[contactField] = values[contactField]
+        else changedFields[contactField] = contactInfo[contactField]
+      })
+      patchContact({ idContact: idContact, args: changedFields })
+        .then((resp) => {
+          updateContactListItem(resp)
+          closeModal()
+        })
+        .catch((e) => {
+          setErrorText(e.response.data)
+        })
+    },
+  })
+
+  return (
+    <>
+      <ST.InputsContainer>
+        <ST.Input
+          placeholder={'Ivanov Ivan'}
+          value={values.name}
+          onChange={handleChange}
+          id={'name'}
+          name={'name'}
+        />
+        <ST.Input
+          placeholder={'+7(927)-144-00-00'}
+          value={values.phoneNumber}
+          onChange={handleChange}
+          id={'phoneNumber'}
+          name={'phoneNumber'}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault()
+              e.stopPropagation()
+              handleSubmit()
+            }
+          }}
+        />
+        <ST.ErrorText>{errorText ? errorText : ''}</ST.ErrorText>
+      </ST.InputsContainer>
+      <ST.SubmitButton
+        type={'submit'}
+        onClick={() => {
+          handleSubmit()
+        }}
+      >
+        Edit
+      </ST.SubmitButton>
+    </>
+  )
+}
+
 export const ContactsList: FC<IContactList> = ({
   contacts,
   deleteContactListItem,
+  updateContactListItem,
 }: IContactList) => {
   const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false)
+  const [showEditModal, setShowEditModal] = useState<boolean>(false)
   const handleDeleteModal = (): void => {
     setShowDeleteModal(!showDeleteModal)
+  }
+  const handleEditModal = (): void => {
+    setShowEditModal(!showEditModal)
   }
 
   const deleteContactItem = (idContact: number): void => {
@@ -58,11 +142,25 @@ export const ContactsList: FC<IContactList> = ({
                   <ST.Cell>{contact.args.name}</ST.Cell>
                   <ST.Cell>{contact.args.phoneNumber}</ST.Cell>
                   <ST.Cell>
-                    <ST.EditContact />
+                    <ST.EditContact onClick={() => handleEditModal()} />
                   </ST.Cell>
                   <ST.Cell>
                     <ST.DeleteContact onClick={() => handleDeleteModal()} />
                   </ST.Cell>
+
+                  <DefaultPopup
+                    children={
+                      <ModalEditContact
+                        idContact={contact.id}
+                        contactInfo={contact.args}
+                        updateContactListItem={updateContactListItem}
+                        closeModal={() => handleEditModal()}
+                      />
+                    }
+                    show={showEditModal}
+                    onClose={handleEditModal}
+                  />
+
                   <DefaultPopup
                     children={
                       <ConfirmDelete
