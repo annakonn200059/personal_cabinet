@@ -1,8 +1,9 @@
-import { IContact, IPostContact, IPostContactResponse } from 'types/contacts'
-import * as ST from './styled'
 import React, { useState } from 'react'
+import * as ST from './styled'
+import { IContact, IPostContact, IPostContactResponse } from 'types/contacts'
 import { useFormik } from 'formik'
 import { patchContact } from 'api/contacts'
+import { onEnterSubmit } from 'utils/onEnterSubmit'
 
 interface IConfirmDelete {
   onDelete: () => void
@@ -83,13 +84,7 @@ export const ModalEditContact = ({
             onChange={handleChange}
             id={'phoneNumber'}
             name={'phoneNumber'}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                e.preventDefault()
-                e.stopPropagation()
-                handleSubmit()
-              }
-            }}
+            onKeyDown={(e) => onEnterSubmit(e, handleSubmit)}
           />
         </ST.InputWrapper>
         <ST.ErrorText>{errorText ? errorText : ''}</ST.ErrorText>

@@ -8,10 +8,13 @@ export const getAllPersonalContacts = async (
   return resp.data
 }
 
-export const getContactInfo = async (
-  idContact: number
-): Promise<IPostContactResponse> => {
-  const resp = await apiRequest().get(`/contacts/${idContact}`)
+export const getSearchContacts = async (
+  searchValue: string,
+  userId: number
+): Promise<IPostContactResponse[]> => {
+  const resp = await apiRequest().get(
+    `/contacts?args.idUser=${userId}&q=${searchValue}`
+  )
   return resp.data
 }
 

@@ -5,6 +5,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { postContact } from 'api/contacts'
 import { IAddContact, IAddContactInputs, IPostContact } from 'types/contacts'
+import { onEnterSubmit } from 'utils/onEnterSubmit'
 
 const AddContactInputs = ({
   setContactsList,
@@ -57,13 +58,7 @@ const AddContactInputs = ({
           onChange={handleChange}
           id={'phoneNumber'}
           name={'phoneNumber'}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              e.preventDefault()
-              e.stopPropagation()
-              handleSubmit()
-            }
-          }}
+          onKeyDown={(e) => onEnterSubmit(e, handleSubmit)}
         />
         <ST.ErrorText>{errorText ? errorText : ''}</ST.ErrorText>
       </ST.InputsContainer>

@@ -5,6 +5,7 @@ import { ContactsList } from './contactsList'
 import { IPostContactResponse } from 'types/contacts'
 import { getAllPersonalContacts } from 'api/contacts'
 import { useGetStateUser } from 'utils/getStateUser'
+import { SearchContactsField } from './searchContactsField'
 
 export const ContactsComponent = () => {
   const [contacts, setContacts] = useState<IPostContactResponse[]>([])
@@ -56,6 +57,10 @@ export const ContactsComponent = () => {
       <ST.MainContainer>
         <AddContact setContactsList={addContactToList} stateUser={stateUser} />
         <ST.ContactTableWrapper>
+          <SearchContactsField
+            setContactsList={setContacts}
+            userId={stateUser.user.id}
+          />
           <ContactsList
             contacts={contacts}
             deleteContactListItem={deleteContactFromList}

@@ -10,7 +10,7 @@ export const AddContactButton = styled.button`
   border-radius: 10px;
   color: ${COLORS.white};
   font-weight: 600;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   font-size: 16px;
 `
 

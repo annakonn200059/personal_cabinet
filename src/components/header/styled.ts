@@ -8,6 +8,10 @@ export const HeaderContainer = styled.div`
   padding: 20px 80px;
   align-items: center;
   justify-content: space-between;
+  @media (max-width: 728px) {
+    padding: 20px 20px;
+    height: 7vh;
+  }
 `
 
 export const LogoContainer = styled.div`
@@ -20,6 +24,11 @@ export const Logo = styled(LogoImg)`
   width: 74px;
   height: 74px;
   margin-right: 20px;
+  @media (max-width: 728px) {
+    margin-right: 10px;
+    width: 45px;
+    height: 45px;
+  }
 `
 
 export const LogoText = styled.div`
@@ -27,6 +36,10 @@ export const LogoText = styled.div`
   font-weight: 600;
   font-size: 24px;
   line-height: 37px;
+  @media (max-width: 728px) {
+    font-size: 20px;
+    line-height: 27px;
+  }
 `
 
 export const TabsContainer = styled.div`
@@ -36,17 +49,9 @@ export const TabsContainer = styled.div`
   padding: 8px 55px;
   background-color: ${COLORS.backgroundGrey};
   border-radius: 16px;
-`
-
-export const MenuItem = styled.div`
-  width: 100%;
-  display: flex;
-  cursor: pointer;
-  justify-content: center;
-  align-items: center;
-  font-weight: 600;
-  color: ${COLORS.darkBlue};
-  margin-bottom: 10px;
+  @media (max-width: 728px) {
+    padding: 8px 25px;
+  }
 `
 
 export const LoginText = styled.div`
@@ -55,4 +60,8 @@ export const LoginText = styled.div`
   line-height: 37px;
   color: ${COLORS.lightGrey};
   cursor: pointer;
+  @media (max-width: 728px) {
+    font-size: 20px;
+    line-height: 27px;
+  }
 `

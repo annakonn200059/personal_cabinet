@@ -99,9 +99,6 @@
   ],
   "contacts": [
     {
-      "id": 1
-    },
-    {
       "args": {
         "name": "Коннова",
         "phoneNumber": "208-268-1158",
@@ -124,6 +121,22 @@
         "idUser": 16
       },
       "id": 4
+    },
+    {
+      "args": {
+        "name": "Rwewetwt",
+        "phoneNumber": "000000000",
+        "idUser": 16
+      },
+      "id": 5
+    },
+    {
+      "args": {
+        "name": "rjgdhdghdg",
+        "phoneNumber": "0000000000000",
+        "idUser": 16
+      },
+      "id": 6
     }
   ]
 }

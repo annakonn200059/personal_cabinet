@@ -10,7 +10,7 @@ export const ContactsSection = styled.section`
 `
 
 export const TableContainer = styled.div`
-  width: 90%;
+  width: 100%;
   padding: 20px;
   background-color: ${COLORS.white};
   border-radius: 20px;

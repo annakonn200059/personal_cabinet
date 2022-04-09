@@ -1,4 +1,3 @@
-import React from 'react'
 import { AuthState } from './auth'
 
 export interface IContact {
