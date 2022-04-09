@@ -1,6 +1,11 @@
 import React from 'react'
 import * as ST from './styled'
+import { Loader } from './loaderComponent'
 
 export const Preloader = () => {
-  return <>Loading</>
+  return (
+    <ST.StyledPreloaderWrapper>
+      <Loader />
+    </ST.StyledPreloaderWrapper>
+  )
 }

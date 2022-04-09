@@ -8,18 +8,22 @@ import { onEnterSubmit } from 'utils/onEnterSubmit'
 interface ISearchContacts {
   setContactsList: React.Dispatch<React.SetStateAction<IPostContactResponse[]>>
   userId: number
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const SearchContactsField: FC<ISearchContacts> = ({
   setContactsList,
   userId,
+  setIsLoading,
 }: ISearchContacts) => {
   const [searchValue, setSearchValue] = useState<string>('')
 
   const handleContactsListWithSearch = (): void => {
+    setIsLoading(true)
     getSearchContacts(searchValue, userId).then((searchedContacts) =>
       setContactsList(searchedContacts)
     )
+    setIsLoading(false)
   }
 
   const handleChangeSearchInput = (

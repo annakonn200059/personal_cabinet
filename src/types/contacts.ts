@@ -26,6 +26,7 @@ export interface IContactList {
   contacts: IPostContactResponse[]
   deleteContactListItem: (idContact: number) => void
   updateContactListItem: (updatedContact: IPostContactResponse) => void
+  isLoading: boolean
 }
 
 export interface IAddContact {
