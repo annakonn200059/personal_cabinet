@@ -9,6 +9,7 @@ export const ContactsList: FC<IContactList> = ({
   contacts,
   deleteContactListItem,
   updateContactListItem,
+  isLoading,
 }: IContactList) => {
   const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false)
   const [showEditModal, setShowEditModal] = useState<boolean>(false)
@@ -27,7 +28,7 @@ export const ContactsList: FC<IContactList> = ({
   return (
     <ST.ContactsSection>
       <ST.TableContainer>
-        {contacts.length > 0 && (
+        {contacts.length > 0 && !isLoading && (
           <ST.ContactsTable>
             <ST.TableHead>
               <ST.TableHeadRow>Your contacts</ST.TableHeadRow>
@@ -78,8 +79,8 @@ export const ContactsList: FC<IContactList> = ({
             </ST.TableBody>
           </ST.ContactsTable>
         )}
-        {contacts.length === 0 && (
-          <ST.TableHeadRow>You haven't added any contacts yet</ST.TableHeadRow>
+        {contacts.length === 0 && !isLoading && (
+          <ST.TableHeadRow>No contacts</ST.TableHeadRow>
         )}
       </ST.TableContainer>
     </ST.ContactsSection>

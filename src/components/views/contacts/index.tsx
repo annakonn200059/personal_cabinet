@@ -6,10 +6,12 @@ import { IPostContactResponse } from 'types/contacts'
 import { getAllPersonalContacts } from 'api/contacts'
 import { useGetStateUser } from 'utils/getStateUser'
 import { SearchContactsField } from './searchContactsField'
+import { Loader } from '../../preloader/loaderComponent'
 
 export const ContactsComponent = () => {
   const [contacts, setContacts] = useState<IPostContactResponse[]>([])
   const stateUser = useGetStateUser()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const addContactToList = useCallback(
     (res: IPostContactResponse) => {
@@ -49,7 +51,9 @@ export const ContactsComponent = () => {
   )
 
   useEffect(() => {
+    setIsLoading(true)
     getAllPersonalContacts(stateUser.user.id).then((resp) => setContacts(resp))
+    setIsLoading(false)
   }, [])
 
   return (
@@ -60,12 +64,18 @@ export const ContactsComponent = () => {
           <SearchContactsField
             setContactsList={setContacts}
             userId={stateUser.user.id}
+            setIsLoading={setIsLoading}
           />
-          <ContactsList
-            contacts={contacts}
-            deleteContactListItem={deleteContactFromList}
-            updateContactListItem={updateContactList}
-          />
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <ContactsList
+              contacts={contacts}
+              deleteContactListItem={deleteContactFromList}
+              updateContactListItem={updateContactList}
+              isLoading={isLoading}
+            />
+          )}
         </ST.ContactTableWrapper>
       </ST.MainContainer>
     </ST.Container>
