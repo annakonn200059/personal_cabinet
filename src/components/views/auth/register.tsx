@@ -9,6 +9,7 @@ import { registerUser } from 'api/auth'
 import { useDispatch } from 'react-redux'
 import { login } from 'store/actions/auth'
 import { useGetStateUser } from 'utils/getStateUser'
+import { onEnterSubmit } from 'utils/onEnterSubmit'
 
 export const Register = ({ setStep }: PropsRegisterStep) => {
   const navigate = useNavigate()
@@ -85,13 +86,7 @@ export const Register = ({ setStep }: PropsRegisterStep) => {
             disabled={isDisabled}
             id={'password'}
             name={'password'}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                e.preventDefault()
-                e.stopPropagation()
-                handleSubmit()
-              }
-            }}
+            onKeyDown={(e) => onEnterSubmit(e, handleSubmit)}
           />
         </>
       }

@@ -89,6 +89,36 @@
       "password": "$2a$10$uipSfVYT4dIvw09Ogg3sF.DcsG9mi40w4qPmu5Uc3ppnJ97Tp7Ume",
       "username": "a.konnova",
       "id": 15
+    },
+    {
+      "email": "Login@mail.ru",
+      "password": "$2a$10$Mu84rjRQPEz8.t7apSRrq.iXlZo.Qwp.KxN5iNhFu522CbVxUQ0vK",
+      "username": "a.konnova",
+      "id": 16
+    },
+    {
+      "email": "aa@mail.ru",
+      "password": "$2a$10$XtodNvTk7e5sey67.29yweI7Aob8I80i6Pu.lIsNdg1BhmBvZQ4sO",
+      "username": "a.konnova",
+      "id": 17
+    }
+  ],
+  "contacts": [
+    {
+      "args": {
+        "name": "ann",
+        "phoneNumber": "+7 (888) 888-88-99",
+        "idUser": 16
+      },
+      "id": 1
+    },
+    {
+      "args": {
+        "name": "Коннова",
+        "phoneNumber": "+7 (215) 669-53-82",
+        "idUser": 17
+      },
+      "id": 2
     }
   ]
 }

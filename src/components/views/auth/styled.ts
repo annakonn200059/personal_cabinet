@@ -21,7 +21,7 @@ export const Input = styled.input`
   font-size: 16px;
   line-height: 140%;
   border: 1px solid ${COLORS.blue};
-  color: ${COLORS.lightGrey};
+  color: ${COLORS.black};
   margin-bottom: 30px;
   &:last-of-type {
     margin-bottom: 15px;
