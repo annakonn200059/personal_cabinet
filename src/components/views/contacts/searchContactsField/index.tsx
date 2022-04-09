@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import * as ST from './styled'
 import { ReactComponent as Search } from 'assets/icons/search.svg'
 import { getSearchContacts } from 'api/contacts/index'
@@ -10,13 +10,13 @@ interface ISearchContacts {
   userId: number
 }
 
-export const SearchContactsField = ({
+export const SearchContactsField: FC<ISearchContacts> = ({
   setContactsList,
   userId,
 }: ISearchContacts) => {
   const [searchValue, setSearchValue] = useState<string>('')
 
-  const handleContactsListWithSearch = () => {
+  const handleContactsListWithSearch = (): void => {
     getSearchContacts(searchValue, userId).then((searchedContacts) =>
       setContactsList(searchedContacts)
     )

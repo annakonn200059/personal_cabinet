@@ -12,6 +12,7 @@ export const ContactsList: FC<IContactList> = ({
 }: IContactList) => {
   const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false)
   const [showEditModal, setShowEditModal] = useState<boolean>(false)
+
   const handleDeleteModal = (): void => {
     setShowDeleteModal(!showDeleteModal)
   }

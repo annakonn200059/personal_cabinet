@@ -9,8 +9,11 @@ export const InputBlock = styled.div`
   background: ${COLORS.inputBG};
   border-radius: 10px;
   padding: 10px 20px;
-  width: 200px;
+  width: 228px;
   margin-bottom: 30px;
+  @media (max-width: 400px) {
+    max-width: 200px;
+  }
 `
 
 export const SearchInput = styled.input`

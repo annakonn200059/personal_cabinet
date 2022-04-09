@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { COLORS } from 'constants/colors'
 import { ReactComponent as EditButton } from 'assets/icons/subscriptions.svg'
 import { ReactComponent as DeleteButton } from 'assets/icons/delete.svg'
+import { BreakPoints } from 'constants/breakPoints'
 
 export const ContactsSection = styled.section`
   width: 100%;
@@ -14,6 +15,10 @@ export const TableContainer = styled.div`
   padding: 20px;
   background-color: ${COLORS.white};
   border-radius: 20px;
+  @media (max-width: ${BreakPoints.PHONE}) {
+    padding: 5px;
+    border-radius: 0;
+  }
 `
 
 export const ContactsTable = styled.div`
@@ -71,6 +76,9 @@ export const Cell = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: ${BreakPoints.PHONE}) {
+    font-size: 14px;
+  }
 `
 
 export const EditContact = styled(EditButton)`

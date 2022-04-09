@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { COLORS } from 'constants/colors'
+import { BreakPoints } from 'constants/breakPoints'
 
 export const AddContactContainer = styled.div``
 
@@ -12,6 +13,9 @@ export const AddContactButton = styled.button`
   font-weight: 600;
   margin-bottom: 20px;
   font-size: 16px;
+  @media (max-width: ${BreakPoints.PHONE}) {
+    font-size: 14px;
+  }
 `
 
 export const InputsContainer = styled.div`
@@ -29,7 +33,7 @@ export const Input = styled.input`
   font-size: 16px;
   line-height: 140%;
   border: 1px solid ${COLORS.blue};
-  color: ${COLORS.lightGrey};
+  color: ${COLORS.black};
   margin-bottom: 30px;
   &:last-of-type {
     margin-bottom: 15px;
