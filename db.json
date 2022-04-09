@@ -108,6 +108,22 @@
         "idUser": 1
       },
       "id": 2
+    },
+    {
+      "args": {
+        "name": "Коннова",
+        "phoneNumber": "215-669-5382",
+        "idUser": 16
+      },
+      "id": 3
+    },
+    {
+      "args": {
+        "name": "Анна",
+        "phoneNumber": "9995466",
+        "idUser": 16
+      },
+      "id": 4
     }
   ]
 }

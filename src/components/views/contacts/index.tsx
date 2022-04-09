@@ -10,14 +10,14 @@ export const ContactsComponent = () => {
   const [contacts, setContacts] = useState<IPostContactResponse[]>([])
   const stateUser = useGetStateUser()
 
-  const setContactsList = useCallback(
+  const addContactToList = useCallback(
     (res: IPostContactResponse) => {
       setContacts((prevState) => [...prevState, res])
     },
     [contacts]
   )
 
-  const deleteContactItem = useCallback(
+  const deleteContactFromList = useCallback(
     (idContact: number) => {
       const newArrayContacts: IPostContactResponse[] = contacts.filter(
         (contact) => {
@@ -29,7 +29,7 @@ export const ContactsComponent = () => {
     [contacts]
   )
 
-  const updateContacts = useCallback(
+  const updateContactList = useCallback(
     (updatedContact: IPostContactResponse) => {
       setContacts(
         contacts.map((contact) =>
@@ -54,12 +54,14 @@ export const ContactsComponent = () => {
   return (
     <ST.Container>
       <ST.MainContainer>
-        <AddContact setContactsList={setContactsList} stateUser={stateUser} />
-        <ContactsList
-          contacts={contacts}
-          deleteContactListItem={deleteContactItem}
-          updateContactListItem={updateContacts}
-        />
+        <AddContact setContactsList={addContactToList} stateUser={stateUser} />
+        <ST.ContactTableWrapper>
+          <ContactsList
+            contacts={contacts}
+            deleteContactListItem={deleteContactFromList}
+            updateContactListItem={updateContactList}
+          />
+        </ST.ContactTableWrapper>
       </ST.MainContainer>
     </ST.Container>
   )

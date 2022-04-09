@@ -16,3 +16,7 @@ export const MainContainer = styled.div`
   row-gap: 40px;
   padding-top: 40px;
 `
+
+export const ContactTableWrapper = styled.div`
+  width: 100%;
+`

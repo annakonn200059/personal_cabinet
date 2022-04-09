@@ -80,18 +80,6 @@ export const DeleteContact = styled(DeleteButton)`
   cursor: pointer;
 `
 
-export const ModalText = styled.p``
-
-export const ConfirmButton = styled.button`
-  margin-top: 20px;
-  background-color: ${COLORS.blue};
-  padding: 4px 30px;
-  border-radius: 10px;
-  color: ${COLORS.white};
-  font-weight: 600;
-  font-size: 16px;
-`
-
 export const InputsContainer = styled.div`
   margin-top: 30px;
 `
@@ -119,23 +107,4 @@ export const ErrorText = styled.div`
   line-height: 140%;
   color: ${COLORS.errorRed};
   margin-bottom: 15px;
-`
-
-export const SubmitButton = styled.button`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 13px 40px;
-  width: 280px;
-  height: 48px;
-  background: ${COLORS.blue};
-  border-radius: 50px;
-  user-select: none;
-  color: ${COLORS.white};
-  font-size: 16px;
-  line-height: 140%;
-  &:disabled {
-    background: ${COLORS.lightGrey};
-  }
 `
